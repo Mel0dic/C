@@ -4,17 +4,38 @@
 int main(){
 
         float fahr, celsius;
-        int lower, upper, step;
+        int lowerf, upperf, stepf;
 
-        lower = 0;
-        upper = 300;
-        step = 20;
+        lowerf = 0;
+        upperf = 200;
+        stepf = 20;
 
-        fahr = lower;
-        while(fahr <= upper) {
+        fahr = lowerf;
+
+        printf("Fahrenheit\tCelsius\n-----------------------------\n");
+
+        while(fahr <= upperf) {
                 celsius = 5 * (fahr-32) / 9;
                 printf("%6.0f\t\t%8.2f\n", fahr, celsius);
-                fahr += step;
+                fahr += stepf;
+        }
+
+
+        float cels, fahrenheit;
+        int lowerc, upperc, stepc;
+
+        lowerc = -20;
+        upperc = 100;
+        stepc = 10;
+
+        cels = lowerc;
+
+        printf("\n\nCelsius\t\tFahrenheit\n-----------------------------\n");
+
+        while(cels <= upperc) {
+                fahrenheit = (9 * cels) / 5 + 32;
+                printf("%6.0f\t\t%8.0f\n", cels, fahrenheit);
+                cels += stepc;
         }
 
 }

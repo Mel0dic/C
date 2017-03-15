@@ -22,16 +22,12 @@ int main(){
 
         int something[5] = {1, 2, 3, 4, 5};
 
-        printf("%d %lu\n\n", something[0], (sizeof(something)/sizeof(something[0])));
+        printf("%d %lu\n", something[0], (sizeof(something)/sizeof(something[0])));
 
         printf("What is your name?\n");
         scanf("%s", fname);
 
         printf("\nYour name is %s\n\n", printname(fname));
-
-        for(int i= 0; i < 10; i++){
-          printf("\n%i\n", i);
-        }
 
         return 0;
 }
