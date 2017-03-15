@@ -7,7 +7,7 @@ int main(){
         int lower, upper, step;
 
         lower = 0;
-        upper = 200;
+        upper = 300;
         step = 20;
 
         fahr = lower;
