@@ -12,7 +12,11 @@ int main(){
 
         swappers(&a, &b);
 
-        printf("a is now %i and b is now %i", a, b);
+        printf("a is now %i and b is now %i\n", a, b);
+
+        swappers(&a, &b);
+
+        printf("a is now back to %i and b is now back to %i", a, b);
 
 }
 
