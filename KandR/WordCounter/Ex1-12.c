@@ -24,5 +24,4 @@ int main(){
         }
 }
 
-
 // Adding a comment to test GITHUB
