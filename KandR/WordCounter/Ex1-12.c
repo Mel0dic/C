@@ -17,11 +17,10 @@ int main(){
 
                     putchar('\n');
 
-            }else{
+            }
 
                     putchar(c);
 
-            }
         }
 }
 
