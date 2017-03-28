@@ -22,7 +22,7 @@ int main(){
 
         }
 
-        printf("digits =");
+        printf("\ndigits =");
 
         for(i = 0; i < 10; ++i){
                 printf(" %d", ndigit[i]);
