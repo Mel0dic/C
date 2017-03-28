@@ -25,9 +25,9 @@ int main(){
 
                 printf("%d", digits[i]);
 
-                for(){
+                for(i = 0; i < len[]; i++){
 
-                        
+
 
                 }
 
