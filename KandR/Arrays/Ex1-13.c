@@ -45,8 +45,9 @@ int main()
 
     maxvalue = 0;
     for (i = 1; i < MAXWORD; ++i){
-        if(wl[i] > maxvalue)
+        if(wl[i] > maxvalue){
             maxvalue = wl[i];
+        }
     }
 
     for(i = 1; i < MAXWORD; ++i){
