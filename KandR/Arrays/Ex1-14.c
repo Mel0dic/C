@@ -1,15 +1,17 @@
 #include <stdio.h>
 
 #define MAX 15
+#define ALPHA 26
 #define IN 0
 #define OUT 1
 
 int main(){
 
+        int c, i, state;
 
-        int digits[MAX];
+        int alphabet[ALPHA], word[MAX];
 
-        for(i = 0; i < MAX; i++){
+        for(i = 0; i < ALPHA; i++){
 
                 digits[i] = 0;
 
@@ -19,7 +21,15 @@ int main(){
 
                 if(c == ' '|| c == '\n' || c == '\t'){
 
+                        state == IN;
 
+                }else if(){
+
+
+
+                }else{
+
+                          ++ndigit[c-'0'];
 
                 }
 
