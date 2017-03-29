@@ -1,15 +1,15 @@
 #include <stdio.h>
 
+#define MAX 15
 #define IN 0
 #define OUT 1
 
 int main(){
 
-        int c, i;
 
-        int digits[10];
+        int digits[MAX];
 
-        for(i = 0; i < 10; i++){
+        for(i = 0; i < MAX; i++){
 
                 digits[i] = 0;
 
@@ -17,7 +17,11 @@ int main(){
 
         while((c = getchar()) != EOF){
 
+                if(c == ' '|| c == '\n' || c == '\t'){
 
+
+
+                }
 
         }
 
