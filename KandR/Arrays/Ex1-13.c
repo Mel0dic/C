@@ -27,19 +27,20 @@ int main()
     {
         if(c == ' ' || c == '\n' || c == '\t'){
             state = OUT;
-            if (nc > 0)
-            {
-                if (nc < MAXWORD)
+            if (nc > 0){
+                if (nc < MAXWORD){
                     ++wl[nc];
-                else
+                }else{
                     ++ovflow;
+                }
             }
             nc = 0;
         }else if (state == OUT){
             state = IN;
             nc = 1;
-        }else
+        }else{
             ++nc;
+        }
         }
 
     maxvalue = 0;
