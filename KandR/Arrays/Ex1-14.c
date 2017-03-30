@@ -7,32 +7,30 @@
 
 int main(){
 
-        int c, i, state;
+        int c, x, i, state, lett;
 
         int lower[ALPHA], upper[ALPHA], word[MAX];
 
         state = IN;
 
-        for(i = 0; i < ALPHA; i++){
+        lett = 65;
+
+        for(i = 0; i < ALPHA; i++) {
 
                 upper[i] = 0;
                 lower[i] = 0;
 
         }
 
-        while((c = getchar()) != EOF){
+        while((c = getchar()) != EOF) {
 
-                if(c >= 65 && c <=90){
+                if(c >= 65 && c <=90) {
 
                         ++upper[c-65];
 
-                }else if(c >= 97 && c <= 122){
+                }else if(c >= 97 && c <= 122) {
 
                         ++lower[c-97];
-
-                }else if(c == ' '|| c == '\n' || c == '\t'){
-
-                        ;
 
                 }
 
@@ -52,17 +50,19 @@ int main(){
         //
         // }
 
-        for(i = 0; i < ALPHA; i++){
+        for(i = 0; i < ALPHA; i++) {
 
-                printf("%d", digits[i]);
+                printf("%c - %3d : ", lett, (upper[i] + lower[i]));
 
-                for(i = 0; i < len[]; i++){
-
-
-
-                }
+                // for(x = 0; x < (upper[i] + lower[i]); i++){
+                //
+                //         printf("*");
+                //
+                // }
 
                 printf("\n");
+
+                lett++;
 
         }
 
