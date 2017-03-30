@@ -15,41 +15,24 @@ int main(){
         lett = 65;
 
         for(i = 0; i < ALPHA; i++) {
-
                 upper[i] = 0;
                 lower[i] = 0;
-
         }
 
         while((c = getchar()) != EOF) {
-
                 if(c >= 65 && c <=90) {
-
                         ++upper[c-65];
-
                 }else if(c >= 97 && c <= 122) {
-
                         ++lower[c-97];
-
                 }
-
         }
-
 
         for(i = 0; i < ALPHA; i++) {
-
                 printf("%c - %3d : ", lett, (upper[i] + lower[i]));
-
                 for(x = 0; x < (upper[i] + lower[i]); x++){
-
                         printf("*");
-
                 }
-
                 printf("\n");
-
                 lett++;
-
         }
-
 }
