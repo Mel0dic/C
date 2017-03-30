@@ -36,6 +36,23 @@ int main(){
 
         }
 
+
+        for(i = 0; i < ALPHA; i++) {
+
+                printf("%c - %3d : ", lett, (upper[i] + lower[i]));
+
+                for(x = 0; x < (upper[i] + lower[i]); x++){
+
+                        printf("*");
+
+                }
+
+                printf("\n");
+
+                lett++;
+
+        }
+
         // for(i = 0; i < ALPHA; i++){
         //
         //       printf("%d",upper[i]);
@@ -49,21 +66,5 @@ int main(){
         //       printf("%d",lower[i]);
         //
         // }
-
-        for(i = 0; i < ALPHA; i++) {
-
-                printf("%c - %3d : ", lett, (upper[i] + lower[i]));
-
-                // for(x = 0; x < (upper[i] + lower[i]); i++){
-                //
-                //         printf("*");
-                //
-                // }
-
-                printf("\n");
-
-                lett++;
-
-        }
-
+        
 }
