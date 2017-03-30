@@ -52,18 +52,4 @@ int main(){
 
         }
 
-        // for(i = 0; i < ALPHA; i++){
-        //
-        //       printf("%d",upper[i]);
-        //
-        // }
-        //
-        // printf("\n");
-        //
-        // for(i = 0; i < ALPHA; i++){
-        //
-        //       printf("%d",lower[i]);
-        //
-        // }
-
 }

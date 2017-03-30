@@ -1,13 +1,29 @@
 #include <stdio.h>
-
 int main(){
 
-  int c;
+    int userInput;
+    int arrayStuff[92];
+    int i, j;
 
-  printf("%d %d\n", ('a'), ('z'));
+    for(i = 0; i < 92; ++i){
+        arrayStuff[i] = 0;
+    }
 
-  printf("%d %d\n", ('A'), ('Z'));
+    while((userInput = getchar()) != '\n'){
+        if(userInput >= 30 && userInput <= 122){
+            if(userInput != '\n'){
+                ++arrayStuff[(userInput-30)];
+            }
 
-  printf("%c %c\n", 91, 92);
+            if(userInput == '\n'){
+                break;
+            }
+        }
+    }
 
+    printf("Case\t|\tOccurances\n");
+
+    for(i = 0; i < 92; ++i){
+        printf("%c\t|\t%d\n", (i+30), arrayStuff[i]);
+    }
 }
