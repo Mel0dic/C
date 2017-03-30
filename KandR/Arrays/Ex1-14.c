@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-#define MAX 15
 #define ALPHA 26
 #define IN 0
 #define OUT 1
@@ -9,7 +8,7 @@ int main(){
 
         int c, x, i, state, lett;
 
-        int lower[ALPHA], upper[ALPHA], word[MAX];
+        int lower[ALPHA], upper[ALPHA];
 
         state = IN;
 
@@ -66,5 +65,5 @@ int main(){
         //       printf("%d",lower[i]);
         //
         // }
-        
+
 }
