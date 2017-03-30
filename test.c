@@ -4,8 +4,10 @@ int main(){
 
   int c;
 
-  c = getchar();
+  printf("%d %d\n", ('a'), ('z'));
 
-  printf("%d", EOF);
+  printf("%d %d\n", ('A'), ('Z'));
+
+  printf("%c %c\n", 91, 92);
 
 }

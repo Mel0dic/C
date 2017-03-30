@@ -9,44 +9,54 @@ int main(){
 
         int c, i, state;
 
-        int alphabet[ALPHA], word[MAX];
+        int lower[ALPHA], upper[ALPHA], word[MAX];
+
+        state = IN;
 
         for(i = 0; i < ALPHA; i++){
 
-                digits[i] = 0;
+                upper[i] = 0;
 
         }
 
         while((c = getchar()) != EOF){
 
-                if(c == ' '|| c == '\n' || c == '\t'){
+                if(c >= 65 && c <=90){
 
-                        state == IN;
+                        ++upper[c-65];
 
-                }else if(){
+                }else if(c >= 97 && c <= 122){
 
+                        ;
 
+                }else if(c == ' '|| c == '\n' || c == '\t'){
 
-                }else{
-
-                          ++ndigit[c-'0'];
+                        ;
 
                 }
 
         }
 
-        for(i = 0; i < 10; i++){
+        for(i = 0; i < ALPHA; i++){
 
-                printf("%d", digits[i]);
-
-                for(i = 0; i < len[]; i++){
-
-
-
-                }
-
-                printf("\n");
+              printf("%d",upper[i]);
 
         }
+
+        // for(i = 0; i < 10; i++){
+        //
+        //         printf("%d", digits[i]);
+        //
+        //         for(i = 0; i < len[]; i++){
+        //
+        //
+        //
+        //         }
+        //
+        //         printf("\n");
+        //
+        // }
+
+        printf("%d", state);
 
 }
