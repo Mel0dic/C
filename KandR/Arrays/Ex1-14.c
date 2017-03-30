@@ -16,6 +16,7 @@ int main(){
         for(i = 0; i < ALPHA; i++){
 
                 upper[i] = 0;
+                lower[i] = 0;
 
         }
 
@@ -27,7 +28,7 @@ int main(){
 
                 }else if(c >= 97 && c <= 122){
 
-                        ;
+                        ++lower[c-97];
 
                 }else if(c == ' '|| c == '\n' || c == '\t'){
 
@@ -37,26 +38,32 @@ int main(){
 
         }
 
-        for(i = 0; i < ALPHA; i++){
-
-              printf("%d",upper[i]);
-
-        }
-
-        // for(i = 0; i < 10; i++){
+        // for(i = 0; i < ALPHA; i++){
         //
-        //         printf("%d", digits[i]);
+        //       printf("%d",upper[i]);
         //
-        //         for(i = 0; i < len[]; i++){
+        // }
         //
+        // printf("\n");
         //
+        // for(i = 0; i < ALPHA; i++){
         //
-        //         }
-        //
-        //         printf("\n");
+        //       printf("%d",lower[i]);
         //
         // }
 
-        printf("%d", state);
+        for(i = 0; i < ALPHA; i++){
+
+                printf("%d", digits[i]);
+
+                for(i = 0; i < len[]; i++){
+
+
+
+                }
+
+                printf("\n");
+
+        }
 
 }
