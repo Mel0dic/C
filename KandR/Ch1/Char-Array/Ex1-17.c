@@ -12,7 +12,7 @@ int main() {
         char line[MAXLINE];
         char longest[MAXLINE];
 
-        max = 0;
+        max = 80;
 
         while((len = getline(line, MAXLINE)) > 0){
 
@@ -53,8 +53,6 @@ int getline(char s[], int lim){
         }
 
         s[i] = '\0';
-
-        //printf("%i", i);
 
         return i;
 
