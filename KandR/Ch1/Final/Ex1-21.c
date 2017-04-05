@@ -1,3 +1,5 @@
+//Using \t uses different spaces so 8 spaces works fine
+
 #include <stdio.h>
 
 #define TAB 8
@@ -10,15 +12,21 @@ int main(){
         while((c = getchar()) != EOF){
 
                 if(c == ' '){
-                        while((c = getchar()) == ' '){
+                        do{
                                 count++;
-                        }
+                        }while((c = getchar()) == ' ');
                         while(count > 8){
-                                putchar('\t');
+                                //putchar('\t');
+                                printf("        ");
+                                count -= 8;
                         }
-                        for(int i = 0; i < count; i++){
-                                putchar(' ');
+                        if(count > 0){
+                                for(int i = 0; i < count; i++){
+                                        putchar(' ');
+                                }
                         }
+                        count = 0;
+                        putchar(c);
                 }else{
                         putchar(c);
                 }
