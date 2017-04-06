@@ -5,9 +5,7 @@ char line[MAXLINE]; /*current input line*/
 
 int getline(void);  /* taken from the KnR book. */
 
-
-int
-main()
+int main()
 {
   int len=0;
   int t=0;
