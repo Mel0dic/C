@@ -2,17 +2,18 @@
 
 int c;
 
-int count = 0;
+int count = scount = 0;
 
 int main(){
 
         while((c = getchar()) != EOF){
 
-                if(count > 80){
-                        
+                if(count > 10){
+
                         putchar(c);
 
                         while((c = getchar()) != ' '){
+                          scount++;
                           putchar(c);
                         }
                         putchar('\n');
