@@ -14,10 +14,6 @@ int main(){
           scanf("%lld", &cnum);
     }
 
-    printf("%lld\n", cnum);
-    printf("%lld\n", cnum % 100);
-    printf("%lld\n", cnum % 10);
-
     printf("%lld\n", ((cnum % 100) - (cnum % 10)) / 10);
 
 }
