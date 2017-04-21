@@ -18,4 +18,6 @@ int main(){
     printf("%lld\n", cnum % 100);
     printf("%lld\n", cnum % 10);
 
+    printf("%lld\n", ((cnum % 100) - (cnum % 10)) / 10);
+
 }
