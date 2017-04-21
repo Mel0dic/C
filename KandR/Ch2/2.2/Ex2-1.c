@@ -6,6 +6,7 @@
 variables, both signed and unsigned, by printing appropriate values from standard headers
 and by direct computation. Harder if you compute them: determine the ranges of the various
 floating-point types. */
+
 int main()
 {
     /* UNSIGNED TYPES */
