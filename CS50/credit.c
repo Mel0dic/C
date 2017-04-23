@@ -22,6 +22,15 @@ int main(){
 
     ccount = cnum;
 
-    
+    int numb[count];
+
+    for(int i = count; i > 0; i--){
+          numb[i] = cnum % 10;
+          cnum /= 10;
+    }
+
+    for(int i = 1; i <= count; i++){
+          printf("%i = %i\n", i, numb[i]);
+    }
 
 }
