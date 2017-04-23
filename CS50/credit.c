@@ -9,9 +9,19 @@ int main(){
     do{
           printf("Number: ");
           scanf("%lld", &cnum);
-          printf("%lld\n", cnum);
-    }while(!(cnum>0));
+    }while(!(cnum > 0));
 
-    printf("%lld\n", ((cnum % 100) - (cnum % 10)) / 10);
+    long long ccount = cnum;
+
+    int count = 0;
+
+    while(ccount > 0){
+          ccount /= 10;
+          count++;
+    }
+
+    ccount = cnum;
+
+    
 
 }
