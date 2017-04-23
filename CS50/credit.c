@@ -6,13 +6,11 @@ int main(){
 
     long long cnum;
 
-    printf("Number: ");
-    scanf("%lld", &cnum);
-
-    while(!(cnum>0)){
-          printf("Retry: ");
+    do{
+          printf("Number: ");
           scanf("%lld", &cnum);
-    }
+          printf("%lld\n", cnum);
+    }while(!(cnum>0));
 
     printf("%lld\n", ((cnum % 100) - (cnum % 10)) / 10);
 
