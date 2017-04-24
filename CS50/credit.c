@@ -6,6 +6,8 @@ int main(){
 
     long long cnum;
 
+    //Ask for input
+
     do{
           printf("Number: ");
           scanf("%lld", &cnum);
@@ -14,6 +16,8 @@ int main(){
     long long ccount = cnum;
 
     int count = 0;
+
+    //Counting number of letters
 
     while(ccount > 0){
           ccount /= 10;
@@ -24,7 +28,10 @@ int main(){
 
     int numb[count-1];
 
-    for(int i = count; i >= 0; i--){
+    //input numbers into an array
+
+    for(int i = count - 1; i >= 0; i--){
+          //printf("%d = %d\n", i, cnum % 10);
           numb[i] = cnum % 10;
           cnum /= 10;
     }
@@ -33,25 +40,38 @@ int main(){
     //       printf("%i = %i\n", i, numb[i]);
     // }
 
-    int twos = count - 1;
+    int twos = count - 2;
     int test = 0;
     int trouble = 0;
 
-    while(twos > 0){
-          printf("%d\n", numb[twos]);
-          test += numb[twos] * 2;
+    //starting with the second to last number * 2 and then every other number going back
+
+    while(twos >= 0){
+          //printf("twos = %d = %d\n", twos, numb[twos]);
+          if(numb[twos] * 2 > 9){
+            test += (numb[twos] * 2) % 10;
+            test += ((numb[twos] * 2) - ((numb[twos] * 2) % 10)) / 10;
+          }else{
+            test += numb[twos] * 2;
+          }
           twos -= 2;
     }
 
-    twos = count;
+    twos = count - 1;
 
-    while(twos > 0){
-          printf("%d\n", numb[twos]);
+    //starting with the last number add every other number to the total number
+
+    while(twos >= 0){
+          //printf("%d\n", numb[twos]);
           trouble += numb[twos];
           twos -= 2;
     }
 
-    printf("\n%d\n", test);
-    printf("\n%d\n", trouble);
+    if((test + trouble) % 10 == 0){
+          printf("\nValid\ntest = %d\ntrouble = %d\n\n", test, trouble);
+          printf("%d %d%d\n", count, numb[0], numb[1]);
+    }else{
+          printf("\nInvalid Number\n");
+    }
 
 }
