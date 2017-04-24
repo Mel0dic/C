@@ -11,10 +11,10 @@ int main(){
 
     printf("How much change is owed? ");
     scanf("%f", &change);
-    // while(!(change>0.00)){
-    //       printf("Retry: ");
-    //       change = GetFloat();
-    // }
+    while(change == NULL){
+          printf("Retry: ");
+          scanf("%f", &change);
+    }
 
     printf("$%.2f\n", change);
 
