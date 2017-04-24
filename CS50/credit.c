@@ -68,8 +68,15 @@ int main(){
     }
 
     if((test + trouble) % 10 == 0){
-          printf("\nValid\ntest = %d\ntrouble = %d\n\n", test, trouble);
-          printf("%d %d%d\n", count, numb[0], numb[1]);
+          if(count == 15 && (numb[0] == 3 && (numb[1] == 7 || numb[1] == 4))){
+            printf("Amex");
+          }else if(count == 16 && (numb[0] == 5 && (numb[1] == 1 || numb[1] == 2 || numb[1] == 3 || numb[1] == 4 || numb[1] == 5))){
+            printf("MasterCard");
+          }else if((count == 13 || count == 16) && (numb[0] == 4)){
+            printf("Visa");
+          }else{
+            printf("\nInvalid Number\n");
+          }
     }else{
           printf("\nInvalid Number\n");
     }
