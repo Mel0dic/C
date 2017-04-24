@@ -5,7 +5,7 @@ int main(){
 
     long long cnum;
 
-    //Ask for input
+    //Ask for Number
 
     do{
           printf("Number: ");
