@@ -40,8 +40,8 @@ int main(){
     // }
 
     int twos = count - 2;
-    int test = 0;
-    int trouble = 0;
+    int test, trouble;
+    int trouble = test = 0;
 
     //starting with the second to last number * 2 and then every other number going back
 
