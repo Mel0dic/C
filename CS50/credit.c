@@ -66,6 +66,8 @@ int main(){
           twos -= 2;
     }
 
+    //Check for different types of cards
+
     if((test + trouble) % 10 == 0){
           if(count == 15 && (numb[0] == 3 && (numb[1] == 7 || numb[1] == 4))){
             printf("Amex");
