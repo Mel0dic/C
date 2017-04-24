@@ -9,7 +9,7 @@ int main(){
     do{
           printf("Number: ");
           scanf("%lld", &cnum);
-    }while(!(cnum > 0));
+    }while(!(cnum > 0)||cnum == NULL);
 
     long long ccount = cnum;
 
