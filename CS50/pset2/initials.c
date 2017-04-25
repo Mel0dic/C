@@ -4,6 +4,10 @@ int c;
 
 int main() {
 
+  if((c = getchar()) != ' '){
+    putchar(upper(c));
+  }
+
   while((c = getchar()) != EOF && c != '\n'){
 
     //printf("%c", c);
