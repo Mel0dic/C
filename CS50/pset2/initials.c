@@ -2,6 +2,8 @@
 
 int c;
 
+int upper(int c);
+
 int main() {
 
   if((c = getchar()) != ' '){
