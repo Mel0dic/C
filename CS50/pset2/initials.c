@@ -29,6 +29,8 @@ int main() {
       if(name[i-1] == ' ' || i == 0){
         putchar(name[i]);
       }
+    }else if((name[i] >= 'a' && name[i] <= 'z') && name[i-1] == ' '){
+        putchar(upper(name[i]));
     }
   }
 }
@@ -36,11 +38,9 @@ int main() {
 
 
 int upper(int c){
-
   if(c >= 'A' && c <= 'Z'){
     return c;
   }else if(c >= 'a' && c <= 'z'){
     return c - 32;
   }
-
 }
