@@ -6,9 +6,9 @@ int upper(int c);
 
 int name[20];
 
-count = 0;
-
 int main() {
+
+  count = 0;
 
   while((c = getchar()) != EOF && c != '\n'){
     name[count] = c;
