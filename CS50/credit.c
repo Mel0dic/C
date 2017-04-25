@@ -41,7 +41,7 @@ int main(){
 
     int twos = count - 2;
     int test, trouble;
-    int trouble = test = 0;
+    trouble = test = 0;
 
     //starting with the second to last number * 2 and then every other number going back
 
@@ -77,9 +77,18 @@ int main(){
             printf("Visa");
           }else{
             printf("\nInvalid Number\n");
+            //retry();
           }
     }else{
           printf("\nInvalid Number\n");
+          //retry();
     }
+
+}
+
+void retry(){
+
+        printf("Retry\n");
+        //main();
 
 }
