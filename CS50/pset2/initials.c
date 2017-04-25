@@ -12,18 +12,17 @@ int main() {
 
   while((c = getchar()) != EOF && c != '\n'){
 
-    //printf("%c", c);
-
-    if(c == ' '){
-      while ((c = getchar()) == ' ') {
-        ;
-      }
-      putchar(upper(c));
-    }else if(c >= 'A' && c <= 'Z'){
-      putchar(c);
-    }
-
   }
+
+  if(c == ' '){
+    while ((c = getchar()) == ' ') {
+      ;
+    }
+    putchar(upper(c));
+  }else if(c >= 'A' && c <= 'Z'){
+    putchar(c);
+  }
+
 
 }
 
