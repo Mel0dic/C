@@ -15,15 +15,6 @@ int main() {
     count++;
   }
 
-  // if(c == ' '){
-  //   while ((c = getchar()) == ' ') {
-  //     ;
-  //   }
-  //   putchar(upper(c));
-  // }else if(c >= 'A' && c <= 'Z'){
-  //   putchar(c);
-  // }
-
   for(int i = 0; i <= count; i++){
     if(name[i] >= 'A' && name[i] <= 'Z'){
       if(name[i-1] == ' ' || i == 0){
