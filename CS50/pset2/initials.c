@@ -4,8 +4,6 @@ int c;
 
 int main() {
 
-  printf("%i %i\n", 'a', 'A');
-
   while((c = getchar()) != EOF && c != '\n'){
 
     //printf("%c", c);
@@ -16,7 +14,7 @@ int main() {
       }
       putchar(upper(c));
     }else if(c >= 'A' && c <= 'Z'){
-      putchar(upper(c));
+      putchar(c);
     }
 
   }
