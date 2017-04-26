@@ -3,7 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 
-char* caesar(int one);
+void caesar(int one);
 
 char* word;
 
@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
 
 }
 
-char* caesar(int one){
+void caesar(int one){
 
   //printf("a - 97 = %i + variable = %i %% 26 = %i + 97 = %i\n", 'a' - 97, ('a' - 97) + one, (('a' - 97) + one) % 26, ((('a' - 97) + one) % 26) + 97);
 
