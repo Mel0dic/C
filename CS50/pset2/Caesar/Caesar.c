@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 char* caesar(int one);
 
@@ -19,26 +20,16 @@ int main(int argc, char* argv[]) {
 
 char* caesar(int one){
 
-  while(one > 26){
-    one -= 26;
-  }
+  // while(one > 26){
+  //   one -= 26;
+  // }
   printf("Please Enter A Word or Sentence: \n");
 
   while((c = getchar()) != EOF){
-    for(int i = 0; i < one; i++){
-      if(c >= 'a' && c<= 'z'){
-        if(c == 'z'){
-          c = 'a';
-        }else{
-          c++;
-        }
-      }else if(c >= 'A' && c<= 'Z'){
-        if(c == 'Z'){
-          c = 'A';
-        }else{
-          c++;
-        }
-      }
+    if(c >= 'a' && c <= 'z'){
+      c = (((c - 97)+one)%26)+97;
+    }else if(c >= 'A' && c <='Z'){
+      c = (((c - 65)+one)%26)+65;
     }
     putchar(c);
   }
