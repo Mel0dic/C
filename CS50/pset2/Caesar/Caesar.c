@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 char* caesar(int one);
 
@@ -26,9 +27,9 @@ char* caesar(int one){
   printf("Please Enter A Word or Sentence: \n");
 
   while((c = getchar()) != EOF){
-    if(c >= 'a' && c <= 'z'){
+    if(islower(c)){
       c = (((c - 97)+one)%26)+97;
-    }else if(c >= 'A' && c <='Z'){
+    }else if(isupper(c)){
       c = (((c - 65)+one)%26)+65;
     }
     putchar(c);
