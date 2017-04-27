@@ -1,66 +1,63 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 
-void begin(char* word);
+void vigenere(char* one);
+
+int word[100], key[20];
+
+int c, count, cline, counts;
 
 int main(int argc, char* argv[]) {
-  //Check for secondary command line input
+
   if(argc == 2){
-      begin(argv[1]);
+    vigenere(argv[1]);
+  }else{
+    printf("Please retry\n");
   }
+
 }
 
-//create two arrays
-char input[100];
-int counter[20];
+void vigenere(char* one){
 
-int c, count, something, counters;
+  //printf("a - 97 = %i + variable = %i %% 26 = %i + 97 = %i\n", 'a' - 97, ('a' - 97) + one, (('a' - 97) + one) % 26, ((('a' - 97) + one) % 26) + 97);
 
-void begin(char* word){
-  //set count to 0
-  count = 0;
+  printf("Plain Text: ");
 
-  printf("%s\n", word);
+  counts = count = 0;
+  cline = strlen(one);
 
-  printf("Please Input Your Cipher Text: \n");
-
-  while((c = getchar()) != '\n'){
-    input[count] = c;
-    count++;
+  for(int i = 0; i < cline; i++){
+    if(islower(one[i])){
+      key[i] = one[i] - 'a';
+    }else if(isupper(one[i])){
+      key[i] = one[i] - 'A';
+    }else{
+      key[i] = one[i];
+    }
   }
 
-  something = strlen(word);
-
-  for(int i = 0; i < something; i++){
-    if(islower(word[i])){
-      counter[i] = word[i] - 'a';
-    }else if(isupper(word[i])){
-      counter[i] = word[i] - 'A';
-    }
+  while((c = getchar()) != '\n'){
+    word[count] = c;
+    count++;
   }
 
   printf("Cipher Text: ");
 
-  counters = 0;
-
   for(int i = 0; i < count; i++){
     if(islower(word[i])){
-        printf("lower");
-      printf("%c\n", (((word[i] - 97)+counter[counters])% 26)+97);
-      counters++;
+      printf("%c", (((word[i] - 97)+key[counts])% 26)+97);
+      counts++;
     }else if(isupper(word[i])){
-    printf("upper");
-      printf("%c\n", (((word[i] - 97)+counter[counters])% 26)+97);
-      counters++;
+      printf("%c", (((word[i] - 65)+key[counts])% 26)+65);
+      counts++;
     }else{
-      printf("%c\n", word[i]);
+      printf("%c", word[i]);
     }
-    if(counters == something){
-      counters = 0;
+    if(counts == cline){
+      counts = 0;
     }
   }
-
   printf("\n");
-
 }
