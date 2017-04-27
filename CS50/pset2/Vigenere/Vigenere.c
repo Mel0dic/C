@@ -39,23 +39,25 @@ void begin(char* word){
     }
   }
 
-  printf("Cipher Text: ")
+  printf("Cipher Text: ");
 
   counters = 0;
 
   for(int i = 0; i < count; i++){
     if(islower(word[i])){
       printf("%c", (((word[i] - 97)+counter[counters])% 26)+97);
+      counters++;
     }else if(isupper(word[i])){
       printf("%c", (((word[i] - 97)+counter[counters])% 26)+97);
+      counters++;
     }else{
       printf("%c", word[i]);
     }
-    if(counters == (something - 1)){
-      counter = 0;
-    }else{
-      counters++;
+    if(counters == something){
+      counters = 0;
     }
   }
+
+  printf("\n");
 
 }
