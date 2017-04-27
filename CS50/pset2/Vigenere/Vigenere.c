@@ -5,19 +5,20 @@
 void begin(char* word);
 
 int main(int argc, char* argv[]) {
+  //Check for secondary command line input
   if(argc == 2){
       begin(argv[1]);
   }
 }
 
+//create two arrays
 char input[100];
-
 int counter[20];
 
 int c, count, something, counters;
 
 void begin(char* word){
-
+  //set count to 0
   count = 0;
 
   printf("%s\n", word);
@@ -45,13 +46,15 @@ void begin(char* word){
 
   for(int i = 0; i < count; i++){
     if(islower(word[i])){
-      printf("%c", (((word[i] - 97)+counter[counters])% 26)+97);
+        printf("lower");
+      printf("%c\n", (((word[i] - 97)+counter[counters])% 26)+97);
       counters++;
     }else if(isupper(word[i])){
-      printf("%c", (((word[i] - 97)+counter[counters])% 26)+97);
+    printf("upper");
+      printf("%c\n", (((word[i] - 97)+counter[counters])% 26)+97);
       counters++;
     }else{
-      printf("%c", word[i]);
+      printf("%c\n", word[i]);
     }
     if(counters == something){
       counters = 0;
