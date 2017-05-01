@@ -5,7 +5,7 @@
 #include <unistd.h>
 
 char *crypt(const char *key, const char *salt);
-char *decrypt(char* hash, char* salt);
+void decrypt(char* hash, char* salt);
 
 char *hash;
 char salts[3];
@@ -24,13 +24,16 @@ int main(int argc, char *argv[]) {
 
 }
 
-char *decrypt(char *hashh, char *salt){
+void decrypt(char *hashh, char *salt){
 
   char fullset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
   char pass[5] = {'\0', '\0', '\0', '\0', '\0'};
 
   for(int i = 0; i < sizeof(fullset); i++){
     printf("%c", fullset[i]);
+  }
+  if(strcmp(hashh, crypt(pass, salt)) == 0){
+      printf("The Password Is: %s", pass);
   }
   printf("\n");
 }
