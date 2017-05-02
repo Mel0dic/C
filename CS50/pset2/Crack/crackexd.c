@@ -1,49 +1,96 @@
+// Brute Force crack crypt() encrypted password
+
+#define _XOPEN_SOURCE
+#include <cs50.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 
-int main(){
+int main(int argc, string argv[])
+{
+    void incrementChar(char string[], int index);
 
+    // Check if correct # of arguments given
+    if (argc != 2)
+    {
+        printf("Wrong number of arguments. Please try again.\n");
 
-    int i = 0, j, k;
-    int minChar, maxChar, maxLen, arraySize;
+        return 1;
+    }
 
-    /*
-    It is stated that password can be up to 8 char long
-    and might contain any ascii printable char (32 -> 126)
-    For testing I've set max lenght to 5 and alphabet to 48 -> 57
-    */
+    // Get Salt
+    char salt[3];
+    strncpy(salt, argv[1], 2);
+    salt[2] = '\0';
 
-    maxLen = 5;             // password max chars
-    minChar = 48;           // ascii inferior limit
-    maxChar = 57;           // ascii superior limit
+    // Load dictionary of words
+    FILE *dict = fopen("/usr/share/dict/words", "r");
+    char word[255];
 
-    arraySize = maxLen + 1; // + 1 for end of string NULL char
-    char str[arraySize];    // initialize pw array
+    // Check if file loads, otherwise return error
+    if (dict == NULL)
+    {
+        printf("Error opening file");
 
-    do {                    // loops through letters of str
-        for (j = minChar; j <= maxChar; j++){ // loops through alphabet
+        return 1;
+    }
 
-            str[i] = j;
-            str[i+1]= 0;    // sets last char to NULL
-            printf("%s\n", str); // This is where crypt() check will go
+    // Loop through file to get strings
+    while (fgets(word, 255, (FILE*)dict) != NULL)
+    {
+        // Check if word is 8 chars and if running crypt on word equals input
+        if (strlen(word) <= 9 && strcmp(crypt(word, salt), argv[1]) == 0)
+        {
+            // Print password
+            printf("%s", word);
 
+            return 0;
         }
-        /* With j being equal to maxChar, the following loop
-        run through previous columns and checks if they're
-        equal maxChar, if yes then reset to minChar,
-        and if not then set to next letter.*/
-        k = i;
-        while (k >= 0) {
-            if (k == 0 && str[k]==maxChar){
-                i++;
-            }
-            if (str[k] == maxChar){
-                str[k] = minChar;
-                k--;
+    }
 
-            } else {
-                str[k]++;
-                break;
-            }
+    // Close file
+    fclose(dict);
+
+    // If not in the dictionary, brute force it
+    // Initialize string to all null characters
+    char test[9] = { '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0' };
+
+    do
+    {
+        // Compares until next null character
+        if (strcmp(crypt(test, salt), argv[1]) == 0)
+        {
+            // Print password
+            printf("%s\n", test);
+
+            return 0;
         }
-    } while(i < maxLen);
+
+        // Increment letter
+        incrementChar(test, 0);
+    }
+    while (test[8] == '\0');
+
+    printf("Password not found\n");
+
+    return 0;
+}
+
+// Function to increment character and carry over if necessary
+void incrementChar(char string[], int index)
+{
+    if (string[index] == '\0')
+    {
+        string[index] = '!';
+    }
+    else if (string[index] == '~')
+    {
+        string[index] = '!';
+        incrementChar(string, index + 1);
+    }
+    else
+    {
+        string[index]++;
+    }
 }
