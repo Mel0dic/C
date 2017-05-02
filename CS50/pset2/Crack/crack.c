@@ -26,11 +26,11 @@ int main(int argc, char *argv[]) {
 
 void decrypt(char *hashh, char *salt){
 
-  char fullset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  char alpha[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
   char pass[5] = {'\0', '\0', '\0', '\0', '\0'};
 
-  for(int i = 0; i < sizeof(fullset); i++){
-    printf("%c", fullset[i]);
+  for(int i = 0; i < sizeof(alpha); i++){
+    printf("%c", alpha[i]);
   }
   if(strcmp(hashh, crypt(pass, salt)) == 0){
       printf("The Password Is: %s", pass);
