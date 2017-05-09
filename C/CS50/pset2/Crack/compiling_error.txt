@@ -1,0 +1,3 @@
+/tmp/ccOZ62c1.o: In function `decrypt':
+crack.c:(.text+0xab): undefined reference to `crypt'
+collect2: error: ld returned 1 exit status

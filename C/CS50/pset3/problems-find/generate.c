@@ -28,10 +28,10 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    // Turns ? into an int and puts it into n
+    // Turns the start of a string into an int and puts it into n
     int n = atoi(argv[1]);
 
-    // Check if command line inputs are = 3 then uses the inputs for amount and 
+    // Check if command line inputs are = 3 then uses the inputs for amount and
     if (argc == 3)
     {
         srand48((long) atoi(argv[2]));
@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
         srand48((long) time(NULL));
     }
 
-    // TODO: comment me
+    // prints out...
     for (int i = 0; i < n; i++)
     {
         printf("%i\n", (int) (drand48() * LIMIT));
