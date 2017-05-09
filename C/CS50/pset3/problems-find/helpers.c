@@ -14,18 +14,22 @@
  * Returns true if value is in array of n values, else false.
  */
 
-bool search(int value, int values[], int n){
-  //int size = sizeof(values)/sizeof(values[0])
-  int half = values[(n/2)];
-  // TODO: implement a searching algorithm
-  while(n > 0){
-    n -= 1;
-    if(values[n/2] == value){return true;}
-    else if(half > value){n /= 2;}
-    else if(half < value){n += n/2;}
-  }
-  return false;
-}
+ bool search(int value, int values[], int n)
+ {
+     //int size = sizeof(values)/sizeof(values[0])
+     min = 0;
+     max = n - 1;
+     // TODO: implement a searching algorithm
+     while(n > 0){
+       half = (min+max)/2;
+       if(values[half] == value){return true;}
+       else if(values[half] < value){min = half+1;}
+       else{max = half-1;}
+       n = max - min + 1;
+     }
+     return false;
+ }
+
 
 
 /**

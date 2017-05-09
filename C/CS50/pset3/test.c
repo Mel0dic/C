@@ -4,12 +4,12 @@
 
 bool search(int value, int values[], int n);
 
-int min, max;
+int min, max, half;
 
-int list[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+int list[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
 int main(){
-  if(search(2, list, 9) == true){
+  if(search(9, list, 10) == true){
       printf("True");
   }
 }
@@ -17,15 +17,19 @@ int main(){
 bool search(int value, int values[], int n)
 {
     //int size = sizeof(values)/sizeof(values[0])
-    int half = (n / 2) - 1;
     min = 0;
-    max = n;
+    max = n - 1;
     // TODO: implement a searching algorithm
     while(n > 0){
-      if(values[half] == value){return true;}
-      else if(values[half - 1] < value){min += half/2;}
-      else if(values[half - 1] > value){max -= half/2}
-      n = n-1;
+      half = (min+max)/2;
+      if(values[half] == value){
+        return true;
+      }else if(values[half] < value){
+        min = half+1;
+      }else{
+        max = half-1;
+      }
+      n = max - min + 1;
     }
     return false;
 }
