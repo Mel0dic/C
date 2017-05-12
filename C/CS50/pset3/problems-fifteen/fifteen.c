@@ -154,13 +154,13 @@ void greet(void)
  * Initializes the game's board with tiles numbered 1 through d*d - 1
  * (i.e., fills 2D array with values but does not actually print them).
  */
-void init(void)
-{
-    for(int i = 0; i < n; i++){
-      for(int j = 0; j < n; i++){
-        
-      }
+void init(void){
+  for(int i = 0; i < d; i++){
+    k = d-1;
+    for(int j = 0; j < d; i++){
+      board[i][j] = (d * d - 1) - (i * j);
     }
+  }
 }
 
 /**
