@@ -1,0 +1,6 @@
+/home/ben/Documents/Code/C/C/CS50/pset3/problems-fifteen/fifteen.c:157:6: error: conflicting types for ‘init’
+ void init(int n)
+      ^
+/home/ben/Documents/Code/C/C/CS50/pset3/problems-fifteen/fifteen.c:35:6: note: previous declaration of ‘init’ was here
+ void init(void);
+      ^
