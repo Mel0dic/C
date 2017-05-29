@@ -11,7 +11,7 @@
  * Note that usleep is obsolete, but it offers more granularity than
  * sleep and is simpler to use than nanosleep; `man usleep` for more.
  */
-
+ 
 #define _XOPEN_SOURCE 500
 
 #include <cs50.h>
@@ -28,6 +28,11 @@ int board[DIM_MAX][DIM_MAX];
 
 // dimensions
 int d;
+
+//other
+int temp;
+int column;
+int row;
 
 // prototypes
 void clear(void);
@@ -48,6 +53,8 @@ int main(int argc, string argv[])
 
     // ensure valid dimensions
     d = atoi(argv[1]);
+    column = d-1;
+    row = d-1;
     if (d < DIM_MIN || d > DIM_MAX)
     {
         printf("Board must be between %i x %i and %i x %i, inclusive.\n",
@@ -102,7 +109,7 @@ int main(int argc, string argv[])
         // prompt for move
         printf("Tile to move: ");
         int tile = get_int();
-
+        
         // quit if user inputs 0 (for testing)
         if (tile == 0)
         {
@@ -123,7 +130,7 @@ int main(int argc, string argv[])
         // sleep thread for animation's sake
         usleep(500000);
     }
-
+    
     // close log
     fclose(file);
 
@@ -147,20 +154,28 @@ void greet(void)
 {
     clear();
     printf("WELCOME TO GAME OF FIFTEEN\n");
-    usleep(2000000);
+    usleep(20000);
 }
 
 /**
  * Initializes the game's board with tiles numbered 1 through d*d - 1
- * (i.e., fills 2D array with values but does not actually print them).
+ * (i.e., fills 2D array with values but does not actually print them).  
  */
-void init(void){
-  for(int i = 0; i < d; i++){
-    k = d-1;
-    for(int j = 0; j < d; i++){
-      board[i][j] = (d * d - 1) - (i * j);
+void init(void)
+{
+    int n = (d*d) - 1;
+    
+    for(int i = 0; i < d; i++){
+        for(int y = 0; y < d; y++){
+            board[i][y] = n;
+            n--;
+        }
     }
-  }
+    board[d-1][d-1] = 0;
+    if(d % 2 == 0){
+        board[d-1][d-2] = 1;
+        board[d-1][d-3] = 2; 
+    }
 }
 
 /**
@@ -168,25 +183,52 @@ void init(void){
  */
 void draw(void)
 {
-    // TODO
+    for(int i = 0; i < d; i++){
+        for(int y = 0; y < d; y++){
+            if(board[i][y] == 0){printf("| _");}
+            else{printf("|%2i", board[i][y]);}
+        }
+        printf("|\n");
+    }
 }
 
 /**
  * If tile borders empty space, moves tile and returns true, else
- * returns false.
+ * returns false. 
  */
 bool move(int tile)
 {
-    // TODO
+    for(int i = 0; i < d; i++){
+        for(int y = 0; y < d; y++){
+            if(board[i][y] == tile){
+                if((i == column-1 && y == row) || (i == column+1 && y == row) || (y == row - 1 && column == i) || (y == row + 1 && i == column)){
+                    temp = board[i][y];
+                    board[i][y] = 0;
+                    board[column][row] = temp;
+                    column = i;
+                    row = y;
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        }
+    }
     return false;
 }
 
 /**
- * Returns true if game is won (i.e., board is in winning configuration),
+ * Returns true if game is won (i.e., board is in winning configuration), 
  * else false.
  */
 bool won(void)
 {
-    // TODO
-    return false;
+    int temps = -1;
+    for(int i = 0; i < d; i++){
+        for(int y = 0; y < d; y++){
+            temps++;
+            if(temps != board[i][y]){return false;}
+        }
+    }
+    return true;
 }

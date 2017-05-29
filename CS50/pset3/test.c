@@ -1,30 +1,35 @@
 #include <stdio.h>
 
-void init(void);
-void print(void);
+void sort(int values[], int n);
 
 int main(){
-  init();
-  print();
+  int values[8] = {9, 9, 3, 4, 1, 4, 6, 2};
+  sort(values, 8);
+  for(int i = 0; i < 8; i++){
+    printf("%i", values[i]);
+  }
+  printf("\n");
 }
 
-int something[5][5];
 
-void init(void)
+void sort(int values[], int n)
 {
-    for(int i = 0; i < 5; i++){
-      int m = i + 1;
-      for(int j = 0; j < 5; j++){
-        something[i][j] = 5*5 - (m + 5 + j);
+    int counter[65536];
+    int que = 0;
+    for(int i = 0; i < 65536; i++){
+      counter[i] = 0;
+    }
+    for(int i = 0; i < n; i++){
+      counter[values[i]]++;
+      printf("%i\n", values[i]);
+    }
+    for(int i = 0; i < 65536; i++){
+      if(counter[i] > 0){
+        for(int f = 0; f < counter[i]; f++){
+          values[que] = i;
+          que++;
+        }
       }
     }
-}
-
-void print(void){
-  for(int l = 0; l < 5; l++){
-    for(int f = 0; f < 5; f++){
-      printf("%i ", something[l][f]);
-    }
-    printf("\n");
-  }
+    return;
 }

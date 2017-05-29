@@ -39,15 +39,21 @@ int min, max, half, holder;
  */
 void sort(int values[], int n)
 {
-  // TODO: implement a sorting algorithm
-  for(int i = 0; i <= n; i++){
-    for(int j = 0; j < n; j++){
-      if(values[j] < values[j-1]){
-        holder = values[j];
-        values[j] = values[j-1];
-        values[j-1] = holder;
+    int counter[65536];
+    int que = 0;
+    for(int i = 0; i < 65536; i++){
+      counter[i] = 0;
+    }
+    for(int i = 0; i < n; i++){
+      counter[values[i]]++;
+    }
+    for(int i = 0; i < 65536; i++){
+      if(counter[i] > 0){
+        for(int f = 0; f < counter[i]; f++){
+          values[que] = i;
+          que++;
+        }
       }
     }
-  }
-  return;
+    return;
 }
