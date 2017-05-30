@@ -154,7 +154,7 @@ void greet(void)
 {
     clear();
     printf("WELCOME TO GAME OF FIFTEEN\n");
-    usleep(20000);
+    usleep(2000000);
 }
 
 /**
