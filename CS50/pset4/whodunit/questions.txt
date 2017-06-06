@@ -1,5 +1,5 @@
-1.  TODO
-2.  TODO
+1.  stdint.h is a header file in c that allows a set of typedefs to specif width integer types.
+2.  
 3.  TODO
 4.  TODO
 5.  TODO
