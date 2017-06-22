@@ -21,5 +21,4 @@ int collatz(int n){
 	else
 		return 1 + collatz(3 * n + 1);
 
-
 }
