@@ -6,11 +6,17 @@
 #include <unistd.h>
 #include <time.h>
 
+
+
 int decision;
 char* messageTable = [];
 int timeTable = [];
 
+
+
 void *myThreadFun(void *vargp);
+
+
 
 int main(int argc, char *argv){
 
@@ -47,6 +53,8 @@ int main(int argc, char *argv){
 	return 1;
 
 }
+
+
 
 void *myThreadFun(void *vargp){
 
