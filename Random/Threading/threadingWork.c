@@ -8,20 +8,19 @@
 #include <string.h>
 
 #define MAXSTRINGLENGTH 10
+#define MAX_SIZE 50
 
-int decision;
+void *myThreadFun(void *);
+void *messageFunc(void *which);
 
 const char * wordList[10] = {"Hello", "hi", "something", "yes", "goodbye", "this", "has", "been", "random", "message"};
 
-void *myThreadFun(void *);
-
-char* concatinate(const char *, const char *);
-
-
+int decision;
+int messagesMax;
+int sleeptimes[10];
+char messagesTable[10][MAX_SIZE];
 
 int main(int argc, char *argv){
-
-	printf("%s\n", wordList[0]);
 
 	pthread_t tid;
 
@@ -32,6 +31,7 @@ int main(int argc, char *argv){
 	}
 	pthread_join(tid, NULL);
 
+
 	//Ask for input of either 1 or 2 and while input is not 1 or 2 ask again until valid
 	//input given
 	do{
@@ -39,59 +39,108 @@ int main(int argc, char *argv){
 		scanf("%i", &decision);
 	}while(decision != 1 && decision != 2);
 
+	//if input was 1 generate random messages
 	if(decision == 1){
 		printf("Generating...\n");
+		//Set random seed to time
 		srand(time(NULL));
-		int messagesMax = (rand() % (10 + 1 - 1) + 1);
-		int timeTable[messagesMax-1];
-		char* messageTable[messagesMax-1];
-		for(int messages = 0;messages < messagesMax;messages++){
+		//Generate random number of messages
+		messagesMax = (rand() % (10 + 1 - 2) + 2);
+		//For loop from zero to randomly generate amount of messages
+		for(int messages = 0;messages <= messagesMax;messages++){
+			//Inistalize string storing message
 			const char * tempMessage;
 			//Sleep needed to get new time and update srand
 			sleep(1);
+			//Set random seed to time
 			srand(time(NULL));
-			for(int word; word < (rand() % (7 + 1 - 2) + 2); word++){
-				tempMessage = concatinate(tempMessage, wordList[rand() % (10 + 0 - 1) + 0]);
-				printf("%s\n", tempMessage);
-			}
+			//Generate on random word from given list
+			tempMessage = wordList[rand() % (10 + 0 - 1) + 0];
+			//Set random seed to time
 			srand(time(NULL));
+			//Generate random sleep time and set it to tempTime
 			int tempTime = rand() % (10 + 1 - 1) + 1;
-
-			//printf("%s\n", tempMessage);
-			timeTable[messages] = tempTime;
-			messageTable[messages] = tempMessage;
+			//Set sleepTime array = generated time
+			sleeptimes[messages] = tempTime;
+			//copy the generated string onto the array
+			strcpy(messagesTable[messages], tempMessage);
 		}
 
-		for(int i = 0; i < messagesMax; i++){
-			printf("%i, %s\n", timeTable[i], messageTable[i]);
+		printf("Done\n");
+
+	}else if(decision == 2){
+
+		char continuation;
+		int inputTime;
+		//Initialize inputMessage to the Ma string length + 1 for \0 then * that by the size of a char
+		unsigned char* inputMessage = malloc((MAX_SIZE+1) * sizeof(char));
+
+		int incrementor = 0;
+
+		//Create an infinit loop
+		while(1){
+
+			//Ask for message
+			printf("Enter your message: ");
+			scanf("%s", inputMessage);
+			//Ask for sleep time
+			printf("Enter the sleep time for that message: ");
+			scanf("%i", &inputTime);
+			//Ask if user would like to continue
+			printf("If you would like to continue enter Y: ");
+			scanf(" %c", &continuation);
+
+			//set sleeptime array to inputTime
+			sleeptimes[incrementor] = inputTime;
+			//copy the generated string onto the array
+			strcpy(messagesTable[incrementor], inputMessage);
+
+			//If user doesn't want to continue break out of loop
+			if(continuation != 'y' && continuation != 'Y'){
+				break;
+			}
+
+			//Increment incrementor
+			incrementor++;
+
 		}
+
+		messagesMax = incrementor;
+
+		//free input message from earlier assignment
+		free(inputMessage);
+
 	}
 
+	//For i in array size create thread passing position in array to messageFunc function
+	for(int i = 0; i <= messagesMax; i++){
+		pthread_create(&tid, NULL, messageFunc, (void *)i);
+	}
 
-	return 1;
+	return pthread_join(tid, NULL);
 
 }
 
 
 
 void *myThreadFun(void *vargp){
-
+	//Setting the void argument into an int
 	unsigned int sleepTime = (int)vargp;
-	//printf("%i\n", sleepTime);
+	//Print thread number and sleep time
 	printf("Thread %i sleeping for %i seconds\n", sleepTime, (sleepTime + 1));
+	//Sleep for sleep time + 1
 	sleep(sleepTime + 1);
 	printf("Finished Sleeping From Thread %i\n", sleepTime);
 	return NULL;
 
 }
 
-char* concatinate(const char *stringOne, const char *stringTwo){
-
-	char *returnValue = malloc(strlen(stringOne) + strlen(stringTwo) + 1);
-
-	strcpy(returnValue, stringOne);
-	strcpy(returnValue, " ");
-	strcpy(returnValue, stringTwo);
-	return returnValue;
-
+void *messageFunc(void *which){
+	//Setting the void argument into an int
+	unsigned int arrayPosition = (int)which;
+	//Aceess the global var sleepTime use argument to sleep for that time
+	sleep(sleeptimes[arrayPosition]);
+	//Access the global var sleepTime use argument to access message
+	printf("%s\n", messagesTable[arrayPosition]);
+	return NULL;
 }
