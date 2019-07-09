@@ -12,6 +12,8 @@ int main(){
 	strcpy(name, "Ben Grummitt");
 	printf("%s\n", name);
 	free(name);
+
+	printf("%d\n", 0b1010 | 0b0101);
 }
 
 void fail(void){
