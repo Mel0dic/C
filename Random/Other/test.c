@@ -5,15 +5,18 @@
 void fail(void);
 
 int main(){
-	char *name = malloc(13 * sizeof(char));
+	printf("Hello world");
+	//printf("%d\n", 0b1010 | 0b0101);
+}
+
+void mallocTest(){
+	char *name = malloc(11  * sizeof(char));
 	if(name == NULL){
 		fail();
 	}
 	strcpy(name, "Ben Grummitt");
 	printf("%s\n", name);
 	free(name);
-
-	printf("%d\n", 0b1010 | 0b0101);
 }
 
 void fail(void){
